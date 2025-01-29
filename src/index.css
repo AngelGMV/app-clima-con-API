@@ -3,6 +3,18 @@
   --primary : 
 }
 
+html {
+  font-size: 62.5%;
+  background-image: url('/fondoClima.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: var(--white);
+  font-size: 2rem ;
+}
+
+
 body{
   .ubuntu-light {
     font-family: "Ubuntu", serif;

@@ -6,6 +6,7 @@
 }
 
 .container{
+    font-size: .5rem;
     width: 80%;
     max-width: 100rem;
     height: 300px;

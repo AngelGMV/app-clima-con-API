@@ -19,13 +19,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 @media(min-width: 768px) {
     .container{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
-        padding: 2rem;
+        padding: 1rem;
     }
 }

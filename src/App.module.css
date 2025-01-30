@@ -1,11 +1,30 @@
 .title{
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     font-size: 2rem;
-    font-family: "Ubuntu", serif;
     font-weight: 700;
 }
 
 .container{
-    
+    width: 80%;
+    max-width: 100rem;
+    height: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(128, 128, 128, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+@media(min-width: 768px) {
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        padding: 2rem;
+    }
 }

@@ -1,7 +1,8 @@
 :root{
   --white : #FFF;
-  --primary : #F79256;
-  --secondary : #1D4E89;
+  --black : #2B303A;
+  --primary : #1D4E89;
+  --secondary : #F79256 ;
 }
 
 html {

@@ -1,14 +1,26 @@
 import styles from './App.module.css'
+import Alert from './components/Alert/Alert'
 import Form from './components/Form/Form'
+import WeatherDateil from './components/weatherDetail/WeatherDateil'
+import useWeather from './hooks/useWeather'
 
 function App() {
+  const { weather, loading, hasWeatherData, fetchWeather } = useWeather()
 
   return (
     <>
-      <h1 className={styles.title}>Clima</h1>
+      <h1 className={styles.title}>Consulta el clima</h1>
       <div className={styles.container}>
-        <Form/>
-        <p>2</p>
+        <Form
+          fetchWeather={fetchWeather}
+        />
+        {loading ? (
+          <p>Cargando...</p>
+        ) : hasWeatherData ? (
+          <WeatherDateil weather={weather} />
+        ) : (
+          <Alert>{"Ingresa los datos para empezar a buscar"}</Alert>
+        )}
       </div>
     </>
   )

@@ -6,7 +6,7 @@ import WeatherDateil from './components/weatherDetail/WeatherDateil'
 import useWeather from './hooks/useWeather'
 
 function App() {
-  const { weather, loading, hasWeatherData, fetchWeather } = useWeather()
+  const { weather, loading, notFound, hasWeatherData, fetchWeather } = useWeather()
 
   return (
     <>
@@ -17,6 +17,8 @@ function App() {
         />
         {loading ? (
           <Spinner/>
+        ) : notFound ? (
+            <Alert>{"Ciudad no encontrada"}</Alert>
         ) : hasWeatherData ? (
           <WeatherDateil weather={weather} />
         ) : (

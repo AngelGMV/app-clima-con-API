@@ -26,7 +26,7 @@ export type WeatherSchema = InferOutput<typeof WeatherSchema>
 export default function useWeather() {
 
     const [weather, setWeather] = useState<WeatherSchema>(initialState)
-
+    const [notFound, setNotFound] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const fetchWeather = async (search: SearchType) => {
@@ -38,6 +38,12 @@ export default function useWeather() {
             ${search.city},${search.country}&appid=${appID}`
 
             const { data: coordinateResult } = await axios(geoURL)
+
+            if(!coordinateResult[0]){
+                setNotFound(true)
+                return
+            }
+
             const lat = coordinateResult[0].lat
             const lon = coordinateResult[0].lon
 
@@ -46,6 +52,7 @@ export default function useWeather() {
             const { data: weatherResult } = await axios(weatherUrl)
             const result = parse(WeatherSchema, weatherResult) 
             if(result){
+                setNotFound(false)
                 setWeather(result)
             }
         } catch (error) {
@@ -58,6 +65,7 @@ export default function useWeather() {
     const hasWeatherData = useMemo(()=> weather.name, [weather])
     return {
         weather,
+        notFound,
         loading,
         hasWeatherData,
         fetchWeather

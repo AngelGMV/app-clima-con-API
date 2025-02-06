@@ -13,23 +13,26 @@ const WeatherSchema = object({
     })
 })
 
+const initialState = {
+    name : '',
+    main : {
+        temp : 0,
+        temp_max : 0,
+        temp_min : 0
+    }
+}
+
 export type WeatherSchema = InferOutput<typeof WeatherSchema>
 export default function useWeather() {
 
-    const [weather, setWeather] = useState<WeatherSchema>({
-        name : '',
-        main : {
-            temp : 0,
-            temp_max : 0,
-            temp_min : 0
-        }
-    })
+    const [weather, setWeather] = useState<WeatherSchema>(initialState)
 
     const [loading, setLoading] = useState(false)
 
     const fetchWeather = async (search: SearchType) => {
         const appID = import.meta.env.VITE_API_KEY
         setLoading(true)
+        setWeather(initialState)
         try {
             const geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=
             ${search.city},${search.country}&appid=${appID}`

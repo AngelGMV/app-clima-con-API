@@ -1,6 +1,7 @@
 import styles from './App.module.css'
 import Alert from './components/Alert/Alert'
 import Form from './components/Form/Form'
+import Spinner from './components/Spinner/Spinner'
 import WeatherDateil from './components/weatherDetail/WeatherDateil'
 import useWeather from './hooks/useWeather'
 
@@ -15,7 +16,7 @@ function App() {
           fetchWeather={fetchWeather}
         />
         {loading ? (
-          <p>Cargando...</p>
+          <Spinner/>
         ) : hasWeatherData ? (
           <WeatherDateil weather={weather} />
         ) : (
